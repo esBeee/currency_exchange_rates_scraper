@@ -1,0 +1,26 @@
+version: '3'
+services:
+  mongo_db:
+    image: mongo:3.7
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=me
+      - MONGO_INITDB_ROOT_PASSWORD=its_really_me
+    volumes:
+      - ./data/mongo_db:/data/db
+    ports:
+      - '27017:27017'
+  chromedriver:
+    image: selenium/standalone-chrome:3.11
+  app:
+    working_dir: /app
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - chromedriver
+      - mongo_db
+    environment:
+      - CHROMEDRIVER_URL=chromedriver:4444
+      - MONGO_DB_URL=me:its_really_me@mongo_db:27017
