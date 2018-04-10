@@ -1,5 +1,6 @@
 # CERS
 *CERS* (**C**urrency **E**xchange **R**ates **S**craper) is a collection of scripts to scrape currency exchange rates and store them in a *MongoDB* database.
+
 *Note: unless otherwise noted, all below commands are assumed to be executed from the directory this readme file is in.*
 
 ## Configuration
